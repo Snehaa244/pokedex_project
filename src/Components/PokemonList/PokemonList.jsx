@@ -10,10 +10,10 @@ function PokemonList(){
     //jab dependancy array banyge to jab phle bar component execute ho jabhi logic render hoga uske bad rerender nhi hoga
     //agar kisi variable ya kisi state variable pe k chnage ko track krna chate ho jab component rerender hoga aur useeffect call hoga
     //eslint mtlb yellow line ki problem can be solved bu=y googling it
-    const POKEDOX_URL = 'https://pokeapi.co/api/v2/pokemon';
+   
     async function downloadpokemons()
     {
-        const response = await axios.get('POKEDOX_URL');//this download 20 list of pokemon
+        const response = await axios.get('https://pokeapi.co/api/v2/pokemon');//this download 20 list of pokemon
 
         const pokemonResults = response.data.results;//we get array of pokemon from the result
         console.log(response.data);
@@ -43,9 +43,11 @@ function PokemonList(){
 return(
     <div className="pokemon-list-wrapper">
         <div>Pokemon List</div>
-        { (isLoading) ? 'Loading....':
+       <div className="pokemon-wrapper">
+         { (isLoading) ? 'Loading....':
         pokemonList.map((p) => <Pokemon name={p.name} image={p.image} key={p.id}/>)
         }
+        </div>
         </div>
     
 
